@@ -44,8 +44,10 @@
                     <li><a href="sayfalar.html">Sayfalar </a></li>
                     <li><a href="kategoriler.html">Kategoriler </a></li>
                     <li><a href="kullanicilar.html">Kullanıcılar </a></li>
-
                 </ul>
+                <form  class="navbar-form navbar-left ">
+                  <input type="text"  class="form-control col-lg-8 arama" placeholder="Ara" >
+                </form>
 
                 <ul class="nav navbar-nav navbar-right">
 
@@ -161,7 +163,19 @@
     {
         $("#table").tablesorter( {sortList: [[0,0], [1,0]]} );
     }
-);
+          );
+
+    </script>
+    <script type="text/javascript">
+        var tSutun = $('table tr');
+        $('.arama').keyup(function() {
+          var self = $(this);
+          var deger = $.trim($(this).val()).toLowerCase();
+          tSutun.show().filter(function() {
+              var yazi = $(this).text().toLowerCase();
+              return !~yazi.indexOf(deger);
+          }).hide();
+        });
 
     </script>
 
